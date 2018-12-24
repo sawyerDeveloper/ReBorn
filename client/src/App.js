@@ -8,8 +8,9 @@ import Home from './containers/Home'
 
 
 export const containers = {
-  USERS: 'Users',
-  POSTS: 'Posts',
+  //TODO: create combobox for examples
+  //USERS: 'Users',
+  //POSTS: 'Posts',
   HOME: 'Home'
 }
 class App extends Component {
