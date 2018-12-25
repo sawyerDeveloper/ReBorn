@@ -13,7 +13,8 @@ const StyleGuide = {
         pink: '#CB2D6F',
         pinkBackground: '#6b2549',
         maude: '#501F3A',
-        background: '#0f1922'
+        background: '#0f1922',
+        dropDownBackground: '#10303f'
     }
 }
 export default StyleGuide

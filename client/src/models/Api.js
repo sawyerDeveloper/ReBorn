@@ -59,7 +59,6 @@ class Api {
     }
 
     getData = (container) => {
-        console.log(this.data)
         return this.data[container] ? this.data[container] : null
     }
 

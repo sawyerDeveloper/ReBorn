@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import StyleGuide from '../../StyleGuide'
+import DropDown from './DropDown'
 
 class Header extends Component {
 
@@ -13,8 +14,10 @@ class Header extends Component {
                 width: '100%',
                 height: 60,
                 display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
                 backgroundColor: StyleGuide.pallette.green,
-                color: StyleGuide.pallette.grey
+                color: StyleGuide.pallette.grey,
             },
             button: {
                 width: this.props.width / this.props.buttons.length,
@@ -48,11 +51,7 @@ class Header extends Component {
                         ReB
                     </div>
                 </div>
-                {this.props.buttons.map((button) => {
-                    return (<div id={button} onClick={this.props.clickHandler} style={styles.button} key={button}>
-                            <div style={styles.buttonLabel}>{button.toUpperCase()}</div>
-                    </div>)
-                })}
+                <DropDown buttons={this.props.buttons} clickHandler={this.props.clickHandler} currentContainer={this.props.currentContainer}/>
             </div>
         )
     }
