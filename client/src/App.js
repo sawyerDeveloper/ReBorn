@@ -8,10 +8,9 @@ import Home from './containers/Home'
 
 
 export const containers = {
-  //TODO: create combobox for examples
-  //USERS: 'Users',
-  //POSTS: 'Posts',
-  HOME: 'Home'
+  USERS: 'USERS',
+  POSTS: 'POSTS',
+  HOME: 'HOME'
 }
 class App extends Component {
 
@@ -76,7 +75,11 @@ class App extends Component {
 
     return (
       <div style={styles.container}>
-        <Header currentContainer={this.state.currentContainer} width={this.state.width} clickHandler={this.setContainer} height={this.state.height} buttons={Object.values(containers)}/>
+        <Header currentContainer={this.state.currentContainer} 
+                width={this.state.width} 
+                clickHandler={this.setContainer} 
+                height={this.state.height} 
+                buttons={Object.values(containers)}/>
         <div style={styles.content}>
           {container}
         </div>
