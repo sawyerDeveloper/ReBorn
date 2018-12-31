@@ -1,5 +1,11 @@
+import Api from "./Api"
+
 class Users {
 
+    /**
+     * @constructor
+     * @param {Api} api 
+     */
     constructor(api) {
         this.api = api
 
@@ -7,11 +13,17 @@ class Users {
         this.name = this.constructor.name 
     }
 
+    /**
+     * Contextual method that ties into the specific business logic for the Users container.
+     * @method getUsers
+     * @param {function} callback
+     */
     getUsers = (callback) => {
 
-        //This data we want to persist for whatever reason so we load it once and pull it from memory
+        //This data we want to persist for whatever reason so we load it once and pull it from memory.
         const data = this.api.getData(this.name)
 
+        //This data exists already - just return that. 
         if(data){
             callback(data)
             return
@@ -19,7 +31,7 @@ class Users {
 
         this.api.apiGet('/api/users/', this.name, (users) => {
 
-            //mutate data here once and save it to the model - not within a react component class
+            //mutate data here once and save it to the model - not within a react component class.
             callback(this.api.setData(this.name, users.reverse()))
         })
     }
