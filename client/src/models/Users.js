@@ -1,13 +1,11 @@
-import Api from "./Api"
-
 class Users {
 
     /**
      * @constructor
-     * @param {Api} api 
+     * @param {Api} model 
      */
-    constructor(api) {
-        this.api = api
+    constructor(model) {
+        this.model = model
 
         //Just for convenience
         this.name = this.constructor.name 
@@ -21,7 +19,7 @@ class Users {
     getUsers = (callback) => {
 
         //This data we want to persist for whatever reason so we load it once and pull it from memory.
-        const data = this.api.getData(this.name)
+        const data = this.model.getData(this.name)
 
         //This data exists already - just return that. 
         if(data){
@@ -29,10 +27,10 @@ class Users {
             return
         }
 
-        this.api.apiGet('/api/users/', this.name, (users) => {
+        this.model.apiGet('/api/users/', this.name, (users) => {
 
             //mutate data here once and save it to the model - not within a react component class.
-            callback(this.api.setData(this.name, users.reverse()))
+            callback(this.model.setData(this.name, users.reverse()))
         })
     }
 

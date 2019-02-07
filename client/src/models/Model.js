@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-class Api {
+class Model {
 
     /**
      * Creates the single data structure all data will be assigned to as the app is in memory. 
@@ -76,5 +76,5 @@ class Api {
 
 }
 
-export default Api
+export default Model
 

@@ -1,28 +1,26 @@
-import Api from "./Api"
-
 class Posts {
 
 
     /**
      * @constructor
-     * @param {Api} api 
+     * @param {Model} model 
      */
-    constructor(api) {
-        this.api = api
+    constructor(model) {
+        this.model = model
 
         //Just for convenience
         this.name = this.constructor.name
     }
 
     /**
-     * Wraps its composite method in Api.
+     * Wraps its composite method in Model.
      * This removes the data model's data from the single source of truth if the data is only needed for 
      * the Posts container and there isn't a good business reason to persist the data.
      * This method should be placed within componentWillUnmount
      * @method deleteData
      */
     deleteData = () => {
-        this.api.deleteData(this.name)
+        this.model.deleteData(this.name)
     }
 
     /**
@@ -31,7 +29,7 @@ class Posts {
      * @param {function} callback
      */
     getPosts = (callback) => {
-        this.api.apiGet('/api/posts/', this.name, (posts) => {
+        this.model.apiGet('/api/posts/', this.name, (posts) => {
 
             //NOTE: Mutate data here once - not within a react component class.
             //We are loading this data fresh each time we load the conatiner so we do this mutation on new data.
