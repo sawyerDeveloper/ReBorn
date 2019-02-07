@@ -11,8 +11,7 @@ class Posts extends Component {
             posts: []
         }
 
-        this.model = new Model(props.api)
-
+        this.model = new Model(props.model)
     }
 
     componentDidMount() {
@@ -24,7 +23,6 @@ class Posts extends Component {
     }
 
     render() {
-
         const styles = {
             container: {
                 width: '100%',

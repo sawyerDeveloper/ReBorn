@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Api from './models/Api'
+import Model from './models/Model'
 import StyleGuide from './StyleGuide'
 import Header from './components/global/Header'
 import Users from './containers/Users'
@@ -8,9 +8,9 @@ import Home from './containers/Home'
 
 
 export const containers = {
-  USERS: 'Users',
-  POSTS: 'Posts',
-  HOME: 'Home'
+  USERS: 'USERS',
+  POSTS: 'POSTS',
+  HOME: 'HOME'
 }
 class App extends Component {
 
@@ -22,7 +22,7 @@ class App extends Component {
       height: window.innerHeight
     }
 
-    this.api = new Api()
+    this.model = new Model()
   }
 
   componentDidMount() {
@@ -63,10 +63,10 @@ class App extends Component {
     let container
     switch (this.state.currentContainer) {
       case containers.POSTS:
-        container = <Posts api={this.api} />
+        container = <Posts model={this.model} />
         break
       case containers.USERS:
-        container = <Users api={this.api} />
+        container = <Users model={this.model} />
         break
       default:
         container = <Home />
@@ -75,7 +75,11 @@ class App extends Component {
 
     return (
       <div style={styles.container}>
-        <Header currentContainer={this.state.currentContainer} width={this.state.width} clickHandler={this.setContainer} height={this.state.height} buttons={Object.values(containers)}/>
+        <Header currentContainer={this.state.currentContainer} 
+                width={this.state.width} 
+                clickHandler={this.setContainer} 
+                height={this.state.height} 
+                buttons={Object.values(containers)}/>
         <div style={styles.content}>
           {container}
         </div>

@@ -11,7 +11,7 @@ class Users extends Component {
             users: []
         }
 
-        this.model = new Model(props.api)
+        this.model = new Model(props.model)
 
     }
 
